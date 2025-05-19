@@ -1,0 +1,8 @@
+open n-soft.jp
+admin
+nsoft
+cd cgi-bin/globe/honsha
+mdel *.CSV
+mput ExportTables.CSV
+mput M_換算.CSV M_拠点.CSV M_銀行.CSV M_区分.CSV M_項目1.CSV M_項目2.CSV M_項目関連.CSV M_車両.CSV M_消費税.CSV M_制御.CSV M_単位.CSV M_単価.CSV M_伝票情報.CSV M_伝票情報関連.CSV M_得意先.CSV M_品目.CSV M_品目分類.CSV
+quit

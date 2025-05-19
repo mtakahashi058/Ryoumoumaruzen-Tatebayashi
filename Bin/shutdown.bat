@@ -1,0 +1,1 @@
+SlClient 192.168.0.93 57180 n24tp "shutdown -s"

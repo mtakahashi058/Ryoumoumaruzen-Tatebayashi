@@ -1,0 +1,6 @@
+open n-soft.jp
+admin
+nsoft
+cd cgi-bin/globe/koujo
+mget *.CSV
+quit

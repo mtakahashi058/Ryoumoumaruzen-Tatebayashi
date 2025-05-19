@@ -1,0 +1,182 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.06.00"/>
+    <PROJECT value="..\..\Bin\Menu.exe"/>
+    <OBJFILES value="Menu.obj Main.obj SettingFrm.obj THREAD.obj KosinListFrm.obj 
+      ..\Lib\NsDB.obj DMFrm.obj"/>
+    <RESFILES value="Menu.res ..\Lib\xpstyle.res"/>
+    <IDLFILES value=""/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES) Main.dfm SettingFrm.dfm KosinListFrm.dfm DMFrm.dfm"/>
+    <LIBFILES value=""/>
+    <LIBRARIES value="adortl.lib bcbie.lib dclusr.lib qrpt.lib bdertl.lib vcldb.lib dbrtl.lib 
+      vclx.lib vcl.lib rtl.lib"/>
+    <SPARELIBS value="rtl.lib vcl.lib vclx.lib dbrtl.lib vcldb.lib bdertl.lib qrpt.lib 
+      dclusr.lib bcbie.lib adortl.lib"/>
+    <PACKAGES value="vclx.bpi rtl.bpi vcl.bpi dbrtl.bpi vcldb.bpi bdertl.bpi vcldbx.bpi 
+      bcbsmp.bpi dclocx.bpi qrpt.bpi teeui.bpi teedb.bpi tee.bpi ibsmp.bpi 
+      nmfast.bpi inetdb.bpi inet.bpi"/>
+    <PATHCPP value=".;..\Lib"/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;..\Lib"/>
+    <PATHASM value=".;"/>
+    <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
+    <RELEASELIBPATH value="$(BCB)\lib\release"/>
+    <LINKER value="ilink32"/>
+    <USERDEFINES value="_DEBUG"/>
+    <SYSDEFINES value="NO_STRICT"/>
+    <MAINSOURCE value="Menu.cpp"/>
+    <INCLUDEPATH value="$(BCB)\include\stlport;..\Lib;$(BCB)\include;$(BCB)\include\vcl;$(BCB)\lib"/>
+    <LIBPATH value="..\Lib;$(BCB)\lib;$(BCB)\lib\obj;$(BCB)\Projects\Lib"/>
+    <WARNINGS value="-w-par -w-8027 -w-8026"/>
+    <WARNOPTSTR value=""/>
+    <OTHERFILES value=""/>
+  </MACROS>
+  <OPTIONS>
+    <CFLAG1 value="-Od -H=c:\PROGRA~1\borland\CBUILD~1\lib\vcl35.csm -Hc -Vx -Ve -Tkh30000 
+      -X- -r- -a8 -b- -k -y -v -vi- -c -tW -tWM"/>
+    <CFLAG2 value=""/>
+    <CFLAG3 value=""/>
+    <PFLAGS value="-$YD -$W -$O- -$A8 -v -M -JPHNE"/>
+    <RFLAGS value=""/>
+    <AFLAGS value="/mx /w2 /zi"/>
+    <LFLAGS value="-D&quot;&quot; -aa -Tpe -x -Gn -v"/>
+    <IFLAGS value=""/>
+    <OTHERFILES value=""/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="c0w32.obj sysinit.obj $(OBJFILES)"/>
+    <ALLRES value="$(RESFILES)"/>
+    <ALLLIB value="$(LIBFILES) $(LIBRARIES) import32.lib cp32mt.lib"/>
+    <OTHERFILES value=""/>
+  </LINKER>
+  <FILELIST>
+      <FILE FILENAME="Menu.cpp" FORMNAME="" UNITNAME="Menu" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Menu.res" FORMNAME="" UNITNAME="Menu.res" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Main.cpp" FORMNAME="MainForm" UNITNAME="Main" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="SettingFrm.cpp" FORMNAME="SettingForm" UNITNAME="SettingFrm" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="THREAD.CPP" FORMNAME="" UNITNAME="THREAD" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Mutex.h" FORMNAME="" UNITNAME="Mutex.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="KosinListFrm.cpp" FORMNAME="KosinListForm" UNITNAME="KosinListFrm" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\Lib\NsDB.cpp" FORMNAME="" UNITNAME="NsDB" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\Lib\xpstyle.rc" FORMNAME="" UNITNAME="xpstyle.rc" CONTAINERID="RC" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="DMFrm.cpp" FORMNAME="DM" UNITNAME="DMFrm" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="TDataModule" LOCALCOMMAND=""/>
+  </FILELIST>
+  <BUILDTOOLS>
+  </BUILDTOOLS>
+
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=0
+AutoIncBuild=1
+MajorVer=0
+MinorVer=9
+Release=2
+Build=11
+Debug=0
+PreRelease=0
+Special=1
+Private=0
+DLL=0
+Locale=1041
+CodePage=932
+
+[Version Info Keys]
+CompanyName=有限会社ニッコーソフトウェア
+FileDescription=
+FileVersion=0.9.2.11
+InternalName=
+LegalCopyright=Copyright (c) 1999, ニッコーソフトウェア
+LegalTrademarks=
+OriginalFilename=Menu.exe
+ProductName=Menu
+ProductVersion=0.9.7.1
+Comments=
+SpecialBuild=
+
+[Excluded Packages]
+c:\program files\borland\cbuilder6\Bin\dclite60.bpl=Borland Integrated Translation Environment
+
+[HistoryLists\hlIncludePath]
+Count=17
+Item0=$(BCB)\include\stlport;..\Lib;$(BCB)\include;$(BCB)\include\vcl;$(BCB)\lib
+Item1=..\MENU;..\Lib;$(BCB)\include;$(BCB)\include\vcl;$(BCB)\lib
+Item2=..\MENU08;$(BCB)\include;$(BCB)\include\vcl;$(BCB)\lib
+Item3=image;..\..\..\三光\Projects\Output\ThreeItemShukei;..\MENU08;$(BCB)\include;$(BCB)\include\vcl;$(BCB)\lib
+Item4=..\MENU08;$(BCB)\lib;$(BCB)\include\vcl;$(BCB)\include
+Item5=..\MENU08;$(BCB)\include\vcl;$(BCB)\include;$(BCB)\lib
+Item6=..\MENU_MANI;..\MENU08;$(BCB)\include\vcl;$(BCB)\include;$(BCB)\lib
+Item7=..\MENU_MANI;..\MENU08;$(BCB)\include;$(BCB)\include\vcl;$(BCB)\lib
+Item8=..\MENU_MANI;$(BCB)\include;$(BCB)\include\vcl;$(BCB)\lib
+Item9=$(BCB)\include;$(BCB)\include\vcl;$(BCB)\lib
+Item10=image;..\..\MENU_MANI;..;..\MENU_MANI;..\MENU08;$(BCB)\include;$(BCB)\include\vcl;$(BCB)\lib
+Item11=$(BCB)\include;$(BCB)\include\vcl;$(BCB)\lib;..\MNU32_test
+Item12=..\MNU32_test;..\MNU2005;..\..\program files\borland\cbuilder3\projects;..\..\program files\borland\cbuilder3\lib;$(BCB)\include;$(BCB)\include\vcl;$(BCB)\lib
+Item13=..\..\program files\borland\cbuilder3\projects;..\..\program files\borland\cbuilder3\lib;$(BCB)\include;$(BCB)\include\vcl;$(BCB)\lib
+Item14=..\..\program files\borland\cbuilder3\projects;..\..\program files\borland\cbuilder3\lib;$(BCB)\include;$(BCB)\include\vcl
+Item15=..\..\program files\borland\cbuilder3\lib;$(BCB)\include;$(BCB)\include\vcl
+Item16=$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=19
+Item0=..\Lib;$(BCB)\lib;$(BCB)\lib\obj;$(BCB)\Projects\Lib
+Item1=..\MENU;..\Lib;$(BCB)\lib;$(BCB)\lib\obj;$(BCB)\Projects\Lib
+Item2=..\MENU08;$(BCB)\lib;$(BCB)\lib\obj;$(BCB)\Projects\Lib
+Item3=image;..\..\..\三光\Projects\Output\ThreeItemShukei;..\MENU08;$(BCB)\lib;$(BCB)\lib\obj;$(BCB)\Projects\Lib
+Item4=..\MENU08;$(BCB)\lib\obj;$(BCB)\lib;$(BCB)\Projects\Lib
+Item5=..\MENU_MANI;..\MENU08;$(BCB)\lib\obj;$(BCB)\lib;$(BCB)\Projects\Lib
+Item6=..\MENU_MANI;..\MENU08;$(BCB)\lib;$(BCB)\lib\obj;$(BCB)\Projects\Lib
+Item7=..\MENU_MANI;$(BCB)\lib;$(BCB)\lib\obj;$(BCB)\Projects\Lib
+Item8=$(BCB)\lib;$(BCB)\lib\obj;$(BCB)\Projects\Lib
+Item9=image;..\..\MENU_MANI;..;..\MENU_MANI;..\MENU08;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib
+Item10=..\MENU_MANI;..\MENU08;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib
+Item11=..\MENU08;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib
+Item12=$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib
+Item13=$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\MNU32_test
+Item14=..\MNU32_test;..\MNU2005;$(BCB)\Projects\Lib;..\..\program files\borland\cbuilder3\projects;..\..\program files\borland\cbuilder3\lib;$(BCB)\lib\obj;$(BCB)\lib
+Item15=$(BCB)\Projects\Lib;..\..\program files\borland\cbuilder3\projects;..\..\program files\borland\cbuilder3\lib;$(BCB)\lib\obj;$(BCB)\lib
+Item16=..\..\program files\borland\cbuilder3\projects;..\..\program files\borland\cbuilder3\lib;$(BCB)\lib\obj;$(BCB)\lib
+Item17=..\..\program files\borland\cbuilder3\lib;$(BCB)\lib\obj;$(BCB)\lib
+Item18=$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=2
+Item0=_DEBUG
+Item1=_RTLDLL;USEPACKAGES
+
+[HistoryLists\hlFinalOutputDir]
+Count=2
+Item0=..\..\Bin\
+Item1=..\..\Bin
+
+[HistoryLists\hIBPIOutputDir]
+Count=1
+Item0=..\..\Bin
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+Launcher=
+UseLauncher=0
+DebugCWD=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteLauncher=
+RemoteCWD=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=0
+LinkDebugVcl=0
+LinkCGLIB=0
+  </IDEOPTIONS>
+</PROJECT>

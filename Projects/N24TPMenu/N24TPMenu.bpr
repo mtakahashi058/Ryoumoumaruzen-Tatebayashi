@@ -1,0 +1,196 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.06.00"/>
+    <PROJECT value="..\..\N24TPBin\N24TPMenu.exe"/>
+    <OBJFILES value="N24TPMenu.obj ConsoleFrm.obj ..\Lib\WI\ZF720Thread.obj 
+      ..\Lib\WI\C95Thread.obj ..\Lib\WI\C4401Thread.obj 
+      ..\Lib\WI\CF701Thread.obj ..\Lib\WI\F720Thread.obj ..\Lib\WI\RMThread.obj 
+      ..\Lib\WI\S95Thread.obj ..\Lib\WI\S4401Thread.obj 
+      ..\Lib\WI\SMU790Thread.obj ..\Lib\WI\Y700AThread.obj DMFrm.obj 
+      DataExportFrm.obj MasterImportFrm.obj DataView.obj ..\Lib\n24tp.obj 
+      ..\Lib\NsDB.obj ..\Lib\WI\CADHVThread.obj ..\Lib\WI\CCSD904ADThread.obj 
+      ..\Lib\WI\CCSD904Thread.obj ..\Lib\WI\CDI275Thread.obj 
+      ..\Lib\WI\CKLD2000Thread.obj ..\Lib\WI\F252Thread.obj 
+      ..\Lib\WI\SDI750Thread.obj ..\Lib\WI\SDIPC275Thread.obj 
+      ..\Lib\WI\SEDP1700Thread.obj ..\Lib\WI\SKLD2000Thread.obj 
+      ..\Lib\WI\SKW201012Thread.obj ..\Lib\WI\SXK3190D2Thread.obj 
+      ..\Lib\NiiState_win10.obj"/>
+    <RESFILES value="N24TPMenu.res ..\Lib\xpstyle.res"/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES) ConsoleFrm.dfm DMFrm.dfm DataExportFrm.dfm MasterImportFrm.dfm 
+      DataView.dfm"/>
+    <LIBFILES value=""/>
+    <LIBRARIES value="vcldb.lib bdertl.lib vclx.lib qrpt.lib dclusr.lib adortl.lib dbrtl.lib 
+      rtl.lib vcl.lib"/>
+    <SPARELIBS value="vcl.lib rtl.lib dbrtl.lib adortl.lib dclusr.lib qrpt.lib vclx.lib 
+      bdertl.lib vcldb.lib"/>
+    <PACKAGES value="vcl.bpi rtl.bpi vclx.bpi bcbsmp.bpi dbrtl.bpi adortl.bpi vcldb.bpi 
+      qrpt.bpi bdertl.bpi vcldbx.bpi dsnap.bpi cds.bpi bdecds.bpi teeui.bpi 
+      teedb.bpi tee.bpi teeqr.bpi ibxpress.bpi visualclx.bpi visualdbclx.bpi 
+      vclie.bpi xmlrtl.bpi inet.bpi inetdbbde.bpi inetdbxpress.bpi inetdb.bpi 
+      nmfast.bpi bcbie.bpi soaprtl.bpi dclocx.bpi dbexpress.bpi dbxcds.bpi 
+      indy.bpi bcb2kaxserver.bpi"/>
+    <PATHCPP value=".;..\Lib\WI;..\Lib"/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
+    <RELEASELIBPATH value="$(BCB)\lib\release"/>
+    <LINKER value="ilink32"/>
+    <USERDEFINES value="_DEBUG"/>
+    <SYSDEFINES value="NO_STRICT"/>
+    <MAINSOURCE value="N24TPMenu.cpp"/>
+    <INCLUDEPATH value="..\Lib\Ns;$(BCB)\Lib;..\Lib\WI;..\Lib\RFID;..\Lib;$(BCB)\include\stlport;$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value="..\Lib\Ns;$(BCB)\Projects\Lib;..\Lib\WI;..\Lib\RFID;..\Lib;$(BCB)\lib\obj;$(BCB)\lib"/>
+    <WARNINGS value="-w-par"/>
+    <OTHERFILES value=""/>
+  </MACROS>
+  <OPTIONS>
+    <CFLAG1 value="-Od -H=$(BCB)\lib\vcl60.csm -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- -c 
+      -tW -tWM"/>
+    <PFLAGS value="-$YD -$W -$O- -$A8 -v -JPHNE -M"/>
+    <RFLAGS value=""/>
+    <AFLAGS value="/mx /w2 /zd"/>
+    <LFLAGS value="-D&quot;&quot; -aa -Tpe -x -Gn -v"/>
+    <OTHERFILES value=""/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="c0w32.obj sysinit.obj $(OBJFILES)"/>
+    <ALLRES value="$(RESFILES)"/>
+    <ALLLIB value="$(LIBFILES) $(LIBRARIES) import32.lib cp32mt.lib"/>
+    <OTHERFILES value=""/>
+  </LINKER>
+  <FILELIST>
+      <FILE FILENAME="N24TPMenu.res" FORMNAME="" UNITNAME="N24TPMenu.res" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="N24TPMenu.cpp" FORMNAME="" UNITNAME="N24TPMenu" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ConsoleFrm.cpp" FORMNAME="ConsoleForm" UNITNAME="ConsoleFrm" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\Lib\WI\ZF720Thread.cpp" FORMNAME="" UNITNAME="ZF720Thread.cpp" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\Lib\WI\C95Thread.cpp" FORMNAME="" UNITNAME="C95Thread.cpp" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\Lib\WI\C4401Thread.cpp" FORMNAME="" UNITNAME="C4401Thread.cpp" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\Lib\WI\CF701Thread.cpp" FORMNAME="" UNITNAME="CF701Thread.cpp" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\Lib\WI\F720Thread.cpp" FORMNAME="" UNITNAME="F720Thread.cpp" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\Lib\WI\RMThread.cpp" FORMNAME="" UNITNAME="RMThread.cpp" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\Lib\WI\S95Thread.cpp" FORMNAME="" UNITNAME="S95Thread.cpp" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\Lib\WI\S4401Thread.cpp" FORMNAME="" UNITNAME="S4401Thread.cpp" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\Lib\WI\SMU790Thread.cpp" FORMNAME="" UNITNAME="SMU790Thread.cpp" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\Lib\WI\Y700AThread.cpp" FORMNAME="" UNITNAME="Y700AThread.cpp" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="DMFrm.cpp" FORMNAME="DM" UNITNAME="DMFrm" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="TDataModule" LOCALCOMMAND=""/>
+      <FILE FILENAME="DataExportFrm.cpp" FORMNAME="DataExportForm" UNITNAME="DataExportFrm" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="MasterImportFrm.cpp" FORMNAME="MasterImportForm" UNITNAME="MasterImportFrm" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="DataView.cpp" FORMNAME="DataViewForm" UNITNAME="DataView" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\Lib\n24tp.cpp" FORMNAME="" UNITNAME="n24tp" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\Lib\NsDB.cpp" FORMNAME="" UNITNAME="NsDB" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\Lib\WI\CADHVThread.cpp" FORMNAME="" UNITNAME="CADHVThread.cpp" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\Lib\WI\CCSD904ADThread.cpp" FORMNAME="" UNITNAME="CCSD904ADThread.cpp" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\Lib\WI\CCSD904Thread.cpp" FORMNAME="" UNITNAME="CCSD904Thread.cpp" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\Lib\WI\CDI275Thread.cpp" FORMNAME="" UNITNAME="CDI275Thread.cpp" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\Lib\WI\CKLD2000Thread.cpp" FORMNAME="" UNITNAME="CKLD2000Thread.cpp" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\Lib\WI\F252Thread.cpp" FORMNAME="" UNITNAME="F252Thread.cpp" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\Lib\WI\SDI750Thread.cpp" FORMNAME="" UNITNAME="SDI750Thread.cpp" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\Lib\WI\SDIPC275Thread.cpp" FORMNAME="" UNITNAME="SDIPC275Thread.cpp" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\Lib\WI\SEDP1700Thread.cpp" FORMNAME="" UNITNAME="SEDP1700Thread.cpp" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\Lib\WI\SKLD2000Thread.cpp" FORMNAME="" UNITNAME="SKLD2000Thread.cpp" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\Lib\WI\SKW201012Thread.cpp" FORMNAME="" UNITNAME="SKW201012Thread.cpp" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\Lib\WI\SXK3190D2Thread.cpp" FORMNAME="" UNITNAME="SXK3190D2Thread.cpp" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\Lib\xpstyle.res" FORMNAME="" UNITNAME="xpstyle.res" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\Lib\NiiState_win10.cpp" FORMNAME="" UNITNAME="NiiState_win10" CONTAINERID="C/C++ コンパイラ" DESIGNCLASS="" LOCALCOMMAND=""/>
+  </FILELIST>
+  <BUILDTOOLS>
+  </BUILDTOOLS>
+
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=1
+AutoIncBuild=1
+MajorVer=2
+MinorVer=3
+Release=1
+Build=8
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1041
+CodePage=932
+
+[Version Info Keys]
+CompanyName=有限会社ニッコーソフトウェア
+FileDescription=N-24TP サービスコンソール
+FileVersion=2.3.1.8
+InternalName=
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=ServCon.exe
+ProductName=
+ProductVersion=2.2
+Comments=
+
+[HistoryLists\hlIncludePath]
+Count=11
+Item0=$(BCB)\Lib;..\Lib\WI;..\Lib\RFID;..\Lib;$(BCB)\include\stlport;$(BCB)\include;$(BCB)\include\vcl
+Item1=..\Lib\Ns;..\Lib\WI;$(BCB)\Lib;..\Lib\RFID;..\Lib;$(BCB)\include\stlport;$(BCB)\include;$(BCB)\include\vcl
+Item2=$(BCB)\Lib;..\Lib\RFID;..\Lib;$(BCB)\include\stlport;$(BCB)\include;$(BCB)\include\vcl
+Item3=$(BCB)\Lib;..\Lib\Ns;C:\Documents and Settings\a_oshima;..\Lib\RFID;..\Lib\WI;..\Lib;$(BCB)\include\stlport;$(BCB)\include;$(BCB)\include\vcl
+Item4=..\Lib\Ns;C:\Documents and Settings\a_oshima;..\Lib\RFID;..\Lib\WI;..\Lib;$(BCB)\include\stlport;$(BCB)\include;$(BCB)\include\vcl
+Item5=..\Lib\RFID;..\Lib\WI;..\Lib;$(BCB)\include\stlport;$(BCB)\include;$(BCB)\include\vcl
+Item6=..\Lib;$(BCB)\include\stlport;$(BCB)\include;$(BCB)\include\vcl
+Item7=..\Lib\RFID;..\Lib\WI;..\Lib;$(BCB)\include;$(BCB)\include\vcl
+Item8=..\Lib;$(BCB)\include;$(BCB)\include\vcl
+Item9=$(BCB)\include;$(BCB)\include\vcl
+Item10=C:\Program Files\Borland\CBuilder6\Projects;C:\Work\N-24TP Std\trunk\Projects\ServCon;$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=9
+Item0=$(BCB)\Projects\Lib;..\Lib\WI;..\Lib\RFID;..\Lib;$(BCB)\lib\obj;$(BCB)\lib
+Item1=..\Lib\Ns;..\Lib\WI;$(BCB)\Projects\Lib;..\Lib\RFID;..\Lib;$(BCB)\lib\obj;$(BCB)\lib
+Item2=$(BCB)\Projects\Lib;..\Lib\RFID;..\Lib;$(BCB)\lib\obj;$(BCB)\lib
+Item3=$(BCB)\Projects\Lib;..\Lib\Ns;C:\Documents and Settings\a_oshima;..\Lib\RFID;..\Lib\WI;..\Lib;$(BCB)\lib\obj;$(BCB)\lib
+Item4=..\Lib\Ns;C:\Documents and Settings\a_oshima;..\Lib\RFID;..\Lib\WI;..\Lib;$(BCB)\lib\obj;$(BCB)\lib
+Item5=..\Lib\RFID;..\Lib\WI;..\Lib;$(BCB)\lib\obj;$(BCB)\lib
+Item6=..\Lib;$(BCB)\lib\obj;$(BCB)\lib
+Item7=C:\Work\N-24TP Std\trunk\Projects\ServCon;$(BCB)\lib\obj;$(BCB)\lib
+Item8=C:\Program Files\Borland\CBuilder6\Projects;C:\Work\N-24TP Std\trunk\Projects\ServCon;$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=1
+Item0=_DEBUG
+
+[HistoryLists\hlFinalOutputDir]
+Count=3
+Item0=..\..\N24TPBin\
+Item1=..\..\Bin\
+Item2=..\..\Bin
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+Launcher=
+UseLauncher=0
+DebugCWD=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteLauncher=
+RemoteCWD=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=0
+LinkDebugVcl=0
+LinkCGLIB=0
+
+[Language]
+ActiveLang=
+ProjectLang=
+RootDir=
+  </IDEOPTIONS>
+</PROJECT>
