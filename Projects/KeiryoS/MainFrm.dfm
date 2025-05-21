@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 322
-  Top = 124
+  Left = 522
+  Top = 208
   Width = 1024
   Height = 768
   Caption = #35336#37327#20966#29702
@@ -410,7 +410,7 @@ object MainForm: TMainForm
     TabOrder = 4
     object Label16: TLabel
       Left = 4
-      Top = 25
+      Top = 73
       Width = 22
       Height = 21
       Caption = #28382
@@ -423,7 +423,7 @@ object MainForm: TMainForm
     end
     object Label4: TLabel
       Left = 4
-      Top = 73
+      Top = 121
       Width = 22
       Height = 21
       Caption = #30041
@@ -436,7 +436,7 @@ object MainForm: TMainForm
     end
     object Label18: TLabel
       Left = 4
-      Top = 121
+      Top = 169
       Width = 22
       Height = 21
       Caption = #36554
@@ -449,7 +449,7 @@ object MainForm: TMainForm
     end
     object Label19: TLabel
       Left = 4
-      Top = 217
+      Top = 265
       Width = 22
       Height = 21
       Caption = #22577
@@ -462,7 +462,7 @@ object MainForm: TMainForm
     end
     object Label23: TLabel
       Left = 4
-      Top = 169
+      Top = 217
       Width = 22
       Height = 21
       Caption = #24773
@@ -475,7 +475,7 @@ object MainForm: TMainForm
     end
     object TairyuKensuLabel: TLabel
       Left = 6
-      Top = 265
+      Top = 313
       Width = 21
       Height = 13
       Alignment = taCenter
@@ -489,9 +489,9 @@ object MainForm: TMainForm
     end
     object TairyuGrid: TDBCtrlGrid
       Left = 28
-      Top = 1
+      Top = 62
       Width = 257
-      Height = 495
+      Height = 434
       Hint = #12480#12502#12523#12463#12522#12483#12463#12391#28382#30041#21628#20986#12434#34892#12356#12414#12377
       Align = alRight
       AllowDelete = False
@@ -500,7 +500,7 @@ object MainForm: TMainForm
       Color = clWhite
       DataSource = dsTairyu
       PanelBorder = gbNone
-      PanelHeight = 70
+      PanelHeight = 62
       PanelWidth = 240
       ParentColor = False
       ParentShowHint = False
@@ -901,6 +901,103 @@ object MainForm: TMainForm
         Font.Style = []
         ParentFont = False
         TabOrder = 3
+      end
+    end
+    object SWBasePanel: TPanel
+      Left = 1
+      Top = 1
+      Width = 284
+      Height = 61
+      Align = alTop
+      BevelOuter = bvNone
+      TabOrder = 2
+      OnClick = SelectScale2
+      DesignSize = (
+        284
+        61)
+      object Label1: TLabel
+        Left = 246
+        Top = 20
+        Width = 36
+        Height = 32
+        Anchors = [akTop, akRight]
+        Caption = 'Kg'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -27
+        Font.Name = 'Verdana'
+        Font.Style = []
+        ParentFont = False
+        OnClick = SelectScale2
+      end
+      object WeightPanel2: TPanel
+        Left = 32
+        Top = 3
+        Width = 212
+        Height = 51
+        Alignment = taRightJustify
+        Anchors = [akTop, akRight]
+        BevelOuter = bvNone
+        Color = clBlack
+        Font.Charset = ANSI_CHARSET
+        Font.Color = 13498276
+        Font.Height = -48
+        Font.Name = 'Verdana'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
+        OnClick = SelectScale2
+      end
+      object SWNamePanel: TPanel
+        Left = 0
+        Top = 0
+        Width = 33
+        Height = 61
+        Align = alLeft
+        BevelOuter = bvNone
+        TabOrder = 1
+        object ScaleNameLabel4: TLabel
+          Left = 8
+          Top = 5
+          Width = 17
+          Height = 15
+          Caption = #21488
+          Font.Charset = SHIFTJIS_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -15
+          Font.Name = #65325#65331' '#12468#12471#12483#12463
+          Font.Style = [fsBold]
+          ParentFont = False
+          OnClick = SelectScale2
+        end
+        object ScaleNameLabel5: TLabel
+          Left = 8
+          Top = 23
+          Width = 17
+          Height = 15
+          Caption = #36011
+          Font.Charset = SHIFTJIS_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -15
+          Font.Name = #65325#65331' '#12468#12471#12483#12463
+          Font.Style = [fsBold]
+          ParentFont = False
+          OnClick = SelectScale2
+        end
+        object ScaleNameLabel6: TLabel
+          Left = 8
+          Top = 41
+          Width = 17
+          Height = 15
+          Caption = #65298
+          Font.Charset = SHIFTJIS_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -15
+          Font.Name = #65325#65331' '#12468#12471#12483#12463
+          Font.Style = [fsBold]
+          ParentFont = False
+          OnClick = SelectScale2
+        end
       end
     end
   end
@@ -1329,7 +1426,7 @@ object MainForm: TMainForm
     object SojuPanel: TPanel
       Left = 4
       Top = 224
-      Width = 703
+      Width = 509
       Height = 37
       Anchors = [akLeft, akTop, akRight]
       BevelOuter = bvNone
@@ -1337,19 +1434,6 @@ object MainForm: TMainForm
       TabOrder = 5
       OnEnter = SharyoPanelEnter
       OnExit = SharyoPanelExit
-      object Label5: TLabel
-        Left = 360
-        Top = 12
-        Width = 70
-        Height = 13
-        Caption = #35336#37327#26085#26178#65306
-        Font.Charset = SHIFTJIS_CHARSET
-        Font.Color = clGray
-        Font.Height = -13
-        Font.Name = #65325#65331' '#12468#12471#12483#12463
-        Font.Style = []
-        ParentFont = False
-      end
       object Label13: TLabel
         Left = 200
         Top = 10
@@ -1362,6 +1446,36 @@ object MainForm: TMainForm
         Font.Name = 'Verdana'
         Font.Style = []
         ParentFont = False
+      end
+      object Label5: TLabel
+        Left = 232
+        Top = 12
+        Width = 70
+        Height = 13
+        Caption = #35336#37327#26085#26178#65306
+        Font.Charset = SHIFTJIS_CHARSET
+        Font.Color = clGray
+        Font.Height = -13
+        Font.Name = #65325#65331' '#12468#12471#12483#12463
+        Font.Style = []
+        ParentFont = False
+      end
+      object TrailerWeight1Button: TButton
+        Tag = 1
+        Left = 244
+        Top = 38
+        Width = 105
+        Height = 25
+        Caption = #36600#37325#35336#37327
+        Font.Charset = SHIFTJIS_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = #65325#65331' '#12468#12471#12483#12463
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 2
+        TabStop = False
+        OnClick = TrailerWeightButtonClick
       end
       object SojuButton: TButton
         Left = 4
@@ -1396,26 +1510,9 @@ object MainForm: TMainForm
         IsInsert = True
         Alignment = taRightJustify
       end
-      object TrailerWeight1Button: TButton
-        Tag = 1
-        Left = 236
-        Top = 6
-        Width = 105
-        Height = 25
-        Caption = #36600#37325#35336#37327
-        Font.Charset = SHIFTJIS_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = #65325#65331' '#12468#12471#12483#12463
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 2
-        TabStop = False
-        OnClick = TrailerWeightButtonClick
-      end
       object FirstDatePicker: TDateTimePicker
         Tag = 1
-        Left = 432
+        Left = 304
         Top = 7
         Width = 121
         Height = 23
@@ -1432,7 +1529,7 @@ object MainForm: TMainForm
         OnChange = WeighingDateTimePickerChange
       end
       object FirstTimePicker: TDateTimePicker
-        Left = 560
+        Left = 432
         Top = 7
         Width = 69
         Height = 23
@@ -1451,7 +1548,7 @@ object MainForm: TMainForm
     object KushaPanel: TPanel
       Left = 4
       Top = 264
-      Width = 703
+      Width = 509
       Height = 37
       Anchors = [akLeft, akTop, akRight]
       BevelOuter = bvNone
@@ -1460,7 +1557,7 @@ object MainForm: TMainForm
       OnEnter = SharyoPanelEnter
       OnExit = SharyoPanelExit
       object Label8: TLabel
-        Left = 360
+        Left = 232
         Top = 12
         Width = 70
         Height = 13
@@ -1518,8 +1615,8 @@ object MainForm: TMainForm
       end
       object TrailerWeight2Button: TButton
         Tag = 2
-        Left = 236
-        Top = 6
+        Left = 244
+        Top = 38
         Width = 105
         Height = 25
         Caption = #36600#37325#35336#37327
@@ -1535,7 +1632,7 @@ object MainForm: TMainForm
       end
       object SecondDatePicker: TDateTimePicker
         Tag = 2
-        Left = 432
+        Left = 304
         Top = 7
         Width = 121
         Height = 23
@@ -1552,7 +1649,7 @@ object MainForm: TMainForm
         OnChange = WeighingDateTimePickerChange
       end
       object SecondTimePicker: TDateTimePicker
-        Left = 560
+        Left = 432
         Top = 7
         Width = 69
         Height = 23
@@ -2073,6 +2170,132 @@ object MainForm: TMainForm
         Alignment = taRightJustify
       end
     end
+    object Panel1: TPanel
+      Left = 522
+      Top = 224
+      Width = 185
+      Height = 37
+      BevelOuter = bvNone
+      Color = 14803425
+      TabOrder = 16
+      object BreakdownLabel1: TLabel
+        Left = 7
+        Top = 5
+        Width = 56
+        Height = 13
+        Caption = #21488#36011#65297#65306
+        Font.Charset = SHIFTJIS_CHARSET
+        Font.Color = clGray
+        Font.Height = -13
+        Font.Name = #65325#65331' '#12468#12471#12483#12463
+        Font.Style = []
+        ParentFont = False
+      end
+      object BreakdownWLabel1: TLabel
+        Left = 104
+        Top = 3
+        Width = 73
+        Height = 16
+        Alignment = taRightJustify
+        Caption = '999,999 kg'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clGray
+        Font.Height = -13
+        Font.Name = 'Verdana'
+        Font.Style = []
+        ParentFont = False
+      end
+      object BreakdownLabel2: TLabel
+        Left = 7
+        Top = 22
+        Width = 56
+        Height = 13
+        Caption = #21488#36011#65298#65306
+        Font.Charset = SHIFTJIS_CHARSET
+        Font.Color = clGray
+        Font.Height = -13
+        Font.Name = #65325#65331' '#12468#12471#12483#12463
+        Font.Style = []
+        ParentFont = False
+      end
+      object BreakdownWLabel2: TLabel
+        Left = 104
+        Top = 20
+        Width = 73
+        Height = 16
+        Alignment = taRightJustify
+        Caption = '999,999 kg'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clGray
+        Font.Height = -13
+        Font.Name = 'Verdana'
+        Font.Style = []
+        ParentFont = False
+      end
+    end
+    object Panel3: TPanel
+      Left = 522
+      Top = 264
+      Width = 185
+      Height = 37
+      BevelOuter = bvNone
+      Color = 14803425
+      TabOrder = 17
+      object BreakdownLabel3: TLabel
+        Left = 7
+        Top = 5
+        Width = 56
+        Height = 13
+        Caption = #21488#36011#65297#65306
+        Font.Charset = SHIFTJIS_CHARSET
+        Font.Color = clGray
+        Font.Height = -13
+        Font.Name = #65325#65331' '#12468#12471#12483#12463
+        Font.Style = []
+        ParentFont = False
+      end
+      object BreakdownLabel4: TLabel
+        Left = 7
+        Top = 22
+        Width = 56
+        Height = 13
+        Caption = #21488#36011#65298#65306
+        Font.Charset = SHIFTJIS_CHARSET
+        Font.Color = clGray
+        Font.Height = -13
+        Font.Name = #65325#65331' '#12468#12471#12483#12463
+        Font.Style = []
+        ParentFont = False
+      end
+      object BreakdownWLabel4: TLabel
+        Left = 104
+        Top = 20
+        Width = 73
+        Height = 16
+        Alignment = taRightJustify
+        Caption = '999,999 kg'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clGray
+        Font.Height = -13
+        Font.Name = 'Verdana'
+        Font.Style = []
+        ParentFont = False
+      end
+      object BreakdownWLabel3: TLabel
+        Left = 104
+        Top = 3
+        Width = 73
+        Height = 16
+        Alignment = taRightJustify
+        Caption = '999,999 kg'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clGray
+        Font.Height = -13
+        Font.Name = 'Verdana'
+        Font.Style = []
+        ParentFont = False
+      end
+    end
   end
   object TopPanel: TPanel
     Left = 0
@@ -2083,23 +2306,6 @@ object MainForm: TMainForm
     BevelOuter = bvNone
     Color = 16562584
     TabOrder = 0
-    DesignSize = (
-      1016
-      61)
-    object Label1: TLabel
-      Left = 960
-      Top = 13
-      Width = 46
-      Height = 42
-      Anchors = [akTop, akRight]
-      Caption = 'Kg'
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -35
-      Font.Name = 'Verdana'
-      Font.Style = []
-      ParentFont = False
-    end
     object Label20: TLabel
       Left = 116
       Top = 10
@@ -2155,23 +2361,6 @@ object MainForm: TMainForm
       Font.Style = []
       ParentFont = False
       TabOrder = 3
-    end
-    object WeightPanel: TPanel
-      Left = 724
-      Top = 6
-      Width = 233
-      Height = 51
-      Alignment = taRightJustify
-      Anchors = [akTop, akRight]
-      BevelOuter = bvNone
-      Color = clBlack
-      Font.Charset = ANSI_CHARSET
-      Font.Color = 13498276
-      Font.Height = -48
-      Font.Name = 'Verdana'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 4
     end
     object KeiryoDatePicker: TDateTimePicker
       Tag = 1
@@ -2237,6 +2426,103 @@ object MainForm: TMainForm
       OnChange = PlaceComboChange
       Items.Strings = (
         #26412#31038'5678901234567890')
+    end
+    object FWBasePanel: TPanel
+      Left = 732
+      Top = 0
+      Width = 284
+      Height = 61
+      Align = alRight
+      BevelOuter = bvNone
+      TabOrder = 4
+      OnClick = SelectScale1
+      DesignSize = (
+        284
+        61)
+      object Label17: TLabel
+        Left = 246
+        Top = 21
+        Width = 36
+        Height = 32
+        Anchors = [akTop, akRight]
+        Caption = 'Kg'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -27
+        Font.Name = 'Verdana'
+        Font.Style = []
+        ParentFont = False
+        OnClick = SelectScale1
+      end
+      object WeightPanel1: TPanel
+        Left = 32
+        Top = 6
+        Width = 212
+        Height = 51
+        Alignment = taRightJustify
+        Anchors = [akTop, akRight]
+        BevelOuter = bvNone
+        Color = clBlack
+        Font.Charset = ANSI_CHARSET
+        Font.Color = 13498276
+        Font.Height = -48
+        Font.Name = 'Verdana'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
+        OnClick = SelectScale1
+      end
+      object FWNamePanel: TPanel
+        Left = 0
+        Top = 0
+        Width = 33
+        Height = 61
+        Align = alLeft
+        BevelOuter = bvNone
+        TabOrder = 1
+        object ScaleNameLabel1: TLabel
+          Left = 8
+          Top = 5
+          Width = 17
+          Height = 15
+          Caption = #21488
+          Font.Charset = SHIFTJIS_CHARSET
+          Font.Color = clRed
+          Font.Height = -15
+          Font.Name = #65325#65331' '#12468#12471#12483#12463
+          Font.Style = [fsBold]
+          ParentFont = False
+          OnClick = SelectScale1
+        end
+        object ScaleNameLabel2: TLabel
+          Left = 8
+          Top = 23
+          Width = 17
+          Height = 15
+          Caption = #36011
+          Font.Charset = SHIFTJIS_CHARSET
+          Font.Color = clRed
+          Font.Height = -15
+          Font.Name = #65325#65331' '#12468#12471#12483#12463
+          Font.Style = [fsBold]
+          ParentFont = False
+          OnClick = SelectScale1
+        end
+        object ScaleNameLabel3: TLabel
+          Left = 8
+          Top = 41
+          Width = 17
+          Height = 15
+          Caption = #65297
+          Font.Charset = SHIFTJIS_CHARSET
+          Font.Color = clRed
+          Font.Height = -15
+          Font.Name = #65325#65331' '#12468#12471#12483#12463
+          Font.Style = [fsBold]
+          ParentFont = False
+          OnClick = SelectScale1
+        end
+      end
     end
   end
   object AutoPrintCheck: TCheckBox
@@ -2576,19 +2862,19 @@ object MainForm: TMainForm
     Left = 868
     Top = 288
   end
-  object ClientSocket: TClientSocket
+  object ClientSocket1: TClientSocket
     Active = False
     ClientType = ctNonBlocking
     Port = 0
-    OnRead = ClientSocketRead
-    OnError = ClientSocketError
-    Left = 736
+    OnRead = ClientSocket1Read
+    OnError = ClientSocket1Error
+    Left = 768
     Top = 8
   end
-  object SocketReopenTimer: TTimer
+  object SocketReopenTimer1: TTimer
     Enabled = False
-    OnTimer = SocketReopenTimerTimer
-    Left = 764
+    OnTimer = SocketReopenTimer1Timer
+    Left = 796
     Top = 8
   end
   object TairyuTimer: TTimer
@@ -2681,5 +2967,20 @@ object MainForm: TMainForm
     DataSet = Q_Rireki
     Left = 920
     Top = 524
+  end
+  object ClientSocket2: TClientSocket
+    Active = False
+    ClientType = ctNonBlocking
+    Port = 0
+    OnRead = ClientSocket2Read
+    OnError = ClientSocket2Error
+    Left = 768
+    Top = 64
+  end
+  object SocketReopenTimer2: TTimer
+    Enabled = False
+    OnTimer = SocketReopenTimer2Timer
+    Left = 796
+    Top = 64
   end
 end

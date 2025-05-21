@@ -68,8 +68,6 @@ __published:	// IDE 管理のコンポーネント
 	TPanel *F11Panel;
 	TPanel *F12Panel;
 	TPanel *ModePanel;
-	TPanel *WeightPanel;
-	TLabel *Label1;
 	TPanel *TairyuPanel;
 	TADOQuery *Q_Tairyu;
 	TDataSource *dsTairyu;
@@ -186,7 +184,7 @@ __published:	// IDE 管理のコンポーネント
 	TShape *Shape3;
 	TShape *Shape4;
 	TComboBox *HannyuCombo;
-	TClientSocket *ClientSocket;
+    TClientSocket *ClientSocket1;
 	TIntegerField *Q_TairyuDSDesigner5;
 	TDBText *TairyuCarNoText;
 	TLabel *Label2;
@@ -197,7 +195,7 @@ __published:	// IDE 管理のコンポーネント
 	TCheckBox *AutoPrintCheck;
 	TButton *TrailerWeight1Button;
 	TButton *TrailerWeight2Button;
-	TTimer *SocketReopenTimer;
+    TTimer *SocketReopenTimer1;
 	TCheckBox *DataDeleteCheck;
     TTimer *TairyuTimer;
     TDateTimePicker *FirstDatePicker;
@@ -244,6 +242,32 @@ __published:	// IDE 管理のコンポーネント
 	TLabel *RirekiKomoku2NameLabel;
 	TLabel *RirekiKomoku2CodeLabel;
 	TLabel *TairyuKensuLabel;
+    TPanel *FWBasePanel;
+    TLabel *Label17;
+    TPanel *WeightPanel1;
+    TPanel *FWNamePanel;
+    TLabel *ScaleNameLabel1;
+    TLabel *ScaleNameLabel2;
+    TLabel *ScaleNameLabel3;
+    TPanel *SWBasePanel;
+    TLabel *Label1;
+    TPanel *WeightPanel2;
+    TPanel *SWNamePanel;
+    TLabel *ScaleNameLabel4;
+    TLabel *ScaleNameLabel5;
+    TLabel *ScaleNameLabel6;
+    TClientSocket *ClientSocket2;
+    TTimer *SocketReopenTimer2;
+    TPanel *Panel1;
+    TPanel *Panel3;
+    TLabel *BreakdownLabel1;
+    TLabel *BreakdownWLabel1;
+    TLabel *BreakdownLabel2;
+    TLabel *BreakdownWLabel2;
+    TLabel *BreakdownLabel3;
+    TLabel *BreakdownLabel4;
+    TLabel *BreakdownWLabel4;
+    TLabel *BreakdownWLabel3;
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall SharyoPanelEnter(TObject *Sender);
 	void __fastcall SharyoPanelExit(TObject *Sender);
@@ -264,10 +288,10 @@ __published:	// IDE 管理のコンポーネント
 	void __fastcall Komoku2CodeEditChange(TObject *Sender);
 	void __fastcall HinCodeEditChange(TObject *Sender);
 	void __fastcall TaniCodeEditChange(TObject *Sender);
-	void __fastcall ClientSocketError(TObject *Sender,
+	void __fastcall ClientSocket1Error(TObject *Sender,
           TCustomWinSocket *Socket, TErrorEvent ErrorEvent,
           int &ErrorCode);
-	void __fastcall ClientSocketRead(TObject *Sender,
+	void __fastcall ClientSocket1Read(TObject *Sender,
           TCustomWinSocket *Socket);
 	void __fastcall FormKeyDown(TObject *Sender, WORD &Key,
           TShiftState Shift);
@@ -291,7 +315,7 @@ __published:	// IDE 管理のコンポーネント
           TShiftState Shift);
 	void __fastcall OnItemsChanged(TObject *Sender);
 	void __fastcall TrailerWeightButtonClick(TObject *Sender);
-	void __fastcall SocketReopenTimerTimer(TObject *Sender);
+	void __fastcall SocketReopenTimer1Timer(TObject *Sender);
 	void __fastcall KeiryoNoEditKeyDown(TObject *Sender, WORD &Key,
           TShiftState Shift);
 	void __fastcall TokuCodeEditExit(TObject *Sender);
@@ -313,6 +337,14 @@ __published:	// IDE 管理のコンポーネント
 	void __fastcall DispRirekiCheckBoxClick(TObject *Sender);
 	void __fastcall ShabanEditEnter(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+    void __fastcall ClientSocket2Error(TObject *Sender,
+          TCustomWinSocket *Socket, TErrorEvent ErrorEvent,
+          int &ErrorCode);
+    void __fastcall ClientSocket2Read(TObject *Sender,
+          TCustomWinSocket *Socket);
+    void __fastcall SocketReopenTimer2Timer(TObject *Sender);
+    void __fastcall SelectScale1(TObject *Sender);
+    void __fastcall SelectScale2(TObject *Sender);
 private:	// ユーザー宣言
 	void __fastcall ClearForm();
 	void __fastcall ApplyConfig();
@@ -336,8 +368,9 @@ private:	// ユーザー宣言
 	void __fastcall SetMode(InputMode mode);
 	InputMode __fastcall GetMode();
 
-	Currency old_weight_;
-	Currency cur_weight_;
+	Currency old_weight1_, old_weight2_;
+	Currency cur_weight1_, cur_weight2_;
+	Currency bdn_weight1_, bdn_weight2_;
 	int keiryo_id_;
 	NsRecordSet keiryo_set_;		// 計量レコード keiryo_id_ と対応
 									// このプログラムは単品用なので NsRecord でもいいけど

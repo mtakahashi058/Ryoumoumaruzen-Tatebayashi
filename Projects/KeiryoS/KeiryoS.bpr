@@ -34,7 +34,7 @@
       vclie.bpi xmlrtl.bpi inet.bpi inetdbbde.bpi inetdbxpress.bpi inetdb.bpi 
       nmfast.bpi bcbie.bpi soaprtl.bpi dclocx.bpi dbexpress.bpi dbxcds.bpi 
       indy.bpi bcb2kaxserver.bpi"/>
-    <PATHCPP value=".;..\Lib;..\Lib\RFID"/>
+    <PATHCPP value=".;..\Lib;..\Lib;..\Lib;..\Lib;..\Lib\RFID;..\Lib;..\Lib;..\Lib"/>
     <PATHPAS value=".;..\Lib"/>
     <PATHRC value=".;..\Lib"/>
     <PATHASM value=".;"/>

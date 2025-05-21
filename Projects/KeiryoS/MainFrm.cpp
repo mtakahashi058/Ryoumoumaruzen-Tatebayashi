@@ -25,7 +25,9 @@ TMainForm *MainForm;
 //---------------------------------------------------------------------------
 __fastcall TMainForm::TMainForm(TComponent* Owner)
     : TForm(Owner),
-        keiryo_id_(0), id_total_(0), cur_weight_(0), old_weight_(0),
+        keiryo_id_(0), id_total_(0),
+		cur_weight1_(0), old_weight1_(0), bdn_weight1_(0),
+		cur_weight2_(0), old_weight2_(0), bdn_weight2_(0),
         rfid_thread_(0), last_card_no_(0)
 {
     Application->OnMessage = MessageProc;
@@ -98,19 +100,48 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 
 	///////////////////////////////////////////////
 	// 重量受信
-	try{
-		// [INI] Weighing::WIPort
-		ClientSocket->Port = ToInt(DM->INI["Weighing::WIPort"]);
-		// [INI] Weighing::WIServer
-		ClientSocket->Host = ToString(DM->INI["Weighing::WIServer"]);
+    if (ToInt(DM->INI["Weighing::WIUse1"])){
+    	try{
+	    	// [INI] Weighing::WIPort
+		    ClientSocket1->Port = ToInt(DM->INI["Weighing::WIPort1"]);
+    		// [INI] Weighing::WIServer
+	    	ClientSocket1->Host = ToString(DM->INI["Weighing::WIServer1"]);
 
-		if (ClientSocket->Active)
-			ClientSocket->Close();
-		ClientSocket->Open();
-	}catch(Exception& e){
-		AnsiString msg = "TCP/IP通信ができません: \r\n" + e.Message;
-		Application->MessageBox(msg.c_str(), "ネットワークエラー", MB_OK | MB_ICONINFORMATION);
-	}
+    		if (ClientSocket1->Active)
+	    		ClientSocket1->Close();
+		    ClientSocket1->Open();
+    	}catch(Exception& e){
+	    	AnsiString msg = "WI1 TCP/IP通信ができません: \r\n" + e.Message;
+		    Application->MessageBox(msg.c_str(), "ネットワークエラー", MB_OK | MB_ICONINFORMATION);
+    	}
+    	SocketReopenTimer1->Enabled = true;
+
+        ScaleNameLabel1->Caption = ToString(DM->INI["Weighing::WIName11"]);
+        ScaleNameLabel2->Caption = ToString(DM->INI["Weighing::WIName12"]);
+        ScaleNameLabel3->Caption = ToString(DM->INI["Weighing::WIName13"]);
+    }
+
+    if (ToInt(DM->INI["Weighing::WIUse2"])){
+        //WeightNamePanel2->Caption = ToString(DM->INI["Weighing::WIName2"]);
+    	try{
+	    	// [INI] Weighing::WIPort
+		    ClientSocket2->Port = ToInt(DM->INI["Weighing::WIPort2"]);
+    		// [INI] Weighing::WIServer
+	    	ClientSocket2->Host = ToString(DM->INI["Weighing::WIServer2"]);
+
+    		if (ClientSocket2->Active)
+	    		ClientSocket2->Close();
+		    ClientSocket2->Open();
+    	}catch(Exception& e){
+	    	AnsiString msg = "WI2 TCP/IP通信ができません: \r\n" + e.Message;
+		    Application->MessageBox(msg.c_str(), "ネットワークエラー", MB_OK | MB_ICONINFORMATION);
+    	}
+    	SocketReopenTimer2->Enabled = true;
+
+        ScaleNameLabel4->Caption = ToString(DM->INI["Weighing::WIName21"]);
+        ScaleNameLabel5->Caption = ToString(DM->INI["Weighing::WIName22"]);
+        ScaleNameLabel6->Caption = ToString(DM->INI["Weighing::WIName23"]);
+    }
 
     ///////////////////////////////////////////////
 	// NP3411
@@ -131,8 +162,6 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 		    Application->MessageBox("外部プリンタとの通信は停止しています", "重量表示器", MB_OK | MB_ICONWARNING);
 	    }
     }
-
-	SocketReopenTimer->Enabled = true;
 
 	Resize();
 
@@ -290,20 +319,41 @@ void __fastcall TMainForm::FormClose(TObject *Sender, TCloseAction &Action)
 }
 //---------------------------------------------------------------------------
 // ソケットの切断を監視
-void __fastcall TMainForm::SocketReopenTimerTimer(TObject *Sender)
+void __fastcall TMainForm::SocketReopenTimer1Timer(TObject *Sender)
 {
-    if (ClientSocket->Active)
+    if (ClientSocket1->Active)
         return;
 
     try{
-        ClientSocket->Socket->Close();
+        ClientSocket1->Socket->Close();
 
         // [INI] Weighing::WIPort
-        ClientSocket->Port = ToInt(DM->INI["Weighing::WIPort"]);
+        ClientSocket1->Port = ToInt(DM->INI["Weighing::WIPort"]);
         // [INI] Weighing::WIServer
-        ClientSocket->Host = ToString(DM->INI["Weighing::WIServer"]);
+        ClientSocket1->Host = ToString(DM->INI["Weighing::WIServer"]);
 
-        ClientSocket->Open();
+        ClientSocket1->Open();
+    }catch(Exception& e){
+        //AnsiString msg = "TCP/IP通信ができません: \r\n" + e.Message;
+        //Application->MessageBox(msg.c_str(), "ネットワークエラー", MB_OK | MB_ICONINFORMATION);
+        ;
+    }
+}
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::SocketReopenTimer2Timer(TObject *Sender)
+{
+	if (ClientSocket2->Active)
+		return;
+
+	try{
+        ClientSocket2->Socket->Close();
+
+		// [INI] Weighing::WIPort
+		ClientSocket2->Port = ToInt(DM->INI["Weighing::WIPort2"]);
+		// [INI] Weighing::WIServer
+        ClientSocket2->Host = ToString(DM->INI["Weighing::WIServer2"]);
+
+        ClientSocket2->Open();
     }catch(Exception& e){
         //AnsiString msg = "TCP/IP通信ができません: \r\n" + e.Message;
         //Application->MessageBox(msg.c_str(), "ネットワークエラー", MB_OK | MB_ICONINFORMATION);
@@ -314,7 +364,22 @@ void __fastcall TMainForm::SocketReopenTimerTimer(TObject *Sender)
 // 別Form 用重量提供メソッド
 Currency __fastcall TMainForm::GetWeight()
 {
-    return cur_weight_;
+/*
+    if (cur_weight1_ > 0 && cur_weight2_ == 0)
+        return cur_weight1_;
+    else if (cur_weight1_ == 0 && cur_weight2_ > 0)
+        return cur_weight2_;
+    else if (FWBasePanel->Color == TColor(0x008AF8FD))
+        return cur_weight1_;
+    else if (SWBasePanel->Color == TColor(0x008AF8FD))
+        return cur_weight2_;
+    else
+        return 0;
+*/
+    bdn_weight1_ = cur_weight1_;
+    bdn_weight2_ = cur_weight2_;
+
+    return cur_weight1_ + cur_weight2_;
 }
 //---------------------------------------------------------------------------
 // 拠点コンボボックスから ID を取得
@@ -360,6 +425,8 @@ void __fastcall TMainForm::ClearForm()
 	FirstTimePicker->Enabled  = false;
 	FirstDatePicker->Format   = "''";
 	FirstTimePicker->Format   = "''";
+    BreakdownWLabel1->Caption = AnsiString();
+    BreakdownWLabel2->Caption = AnsiString();
 	SecondWEdit->Text         = AnsiString();
 	SecondDatePicker->Date    = now;
 	SecondTimePicker->Time    = now;
@@ -367,6 +434,8 @@ void __fastcall TMainForm::ClearForm()
 	SecondTimePicker->Enabled = false;
 	SecondDatePicker->Format  = "''";
 	SecondTimePicker->Format  = "''";
+    BreakdownWLabel3->Caption = AnsiString();
+    BreakdownWLabel4->Caption = AnsiString();
 	ChoseirituEdit->Text      = AnsiString();
 	ChoseiEdit->Text          = AnsiString();
 	JuryobikiEdit->Text       = AnsiString();
@@ -548,7 +617,10 @@ void __fastcall TMainForm::ContinueWeighing(int id)
     TNotifyEvent OnExit = ShabanEdit->OnExit;
     ShabanEdit->OnExit  = 0;
 
-    SecondWEdit->Text = cur_weight_;
+    //SecondWEdit->Text = cur_weight_;
+    SecondWEdit->Text = GetWeight();
+    BreakdownWLabel3->Caption = AnsiString(bdn_weight1_) + " kg";
+    BreakdownWLabel4->Caption = AnsiString(bdn_weight2_) + " kg";
 
     CalcWeight();
 
@@ -692,6 +764,8 @@ void __fastcall TMainForm::PostWeighing()
                 KeiryoNoEdit->Text = DM->GetTempNo(GetPlaceID());
                 fields << NsField("[伝票No]",    KeiryoNoEdit->Text.ToInt())
                        << NsField("[1回目重量]", std::max(w1, w2))
+                       << NsField("[1回目台貫重量1]", bdn_weight1_)
+                       << NsField("[1回目台貫重量2]", bdn_weight2_)
                        << NsField("[計量日時1]", dt1)
                        << NsField("[完了区分]",  0)
                        ;
@@ -701,6 +775,8 @@ void __fastcall TMainForm::PostWeighing()
                 fields << NsField("[伝票No]",    KeiryoNoEdit->Text.ToInt())
                        << NsField("[1回目重量]", w1)
                        // << NsField("[計量日時1]", now)
+                       << NsField("[1回目台貫重量1]", bdn_weight1_)
+                       << NsField("[1回目台貫重量2]", bdn_weight2_)
                        << NsField("[2回目重量]", w2)
                        << NsField("[計量日時2]", dt2)
                        << NsField("[完了区分]",  1)
@@ -737,6 +813,8 @@ void __fastcall TMainForm::PostWeighing()
 					   << NsField("[1回目重量]", w1)
 					   //<< NsField("[計量日時1]", now)
 					   << NsField("[2回目重量]", w2)
+                       << NsField("[2回目台貫重量1]", bdn_weight1_)
+                       << NsField("[2回目台貫重量2]", bdn_weight2_)
 					   << NsField("[計量日時2]", dt2)
 					   << NsField("[完了区分]",  1)
 					   ;
@@ -1504,14 +1582,23 @@ void __fastcall TMainForm::Action10Execute(TObject *Sender)
 	InputMode mode = GetMode();
 	if (mode == imFirst){
 		if (keiryo_count_ == 2 || keiryo_count_ == 0){
-			FirstWEdit->Text = cur_weight_;
+			//FirstWEdit->Text = cur_weight_;
+			FirstWEdit->Text = GetWeight();
+            BreakdownWLabel1->Caption = AnsiString(bdn_weight1_) + " kg";
+            BreakdownWLabel2->Caption = AnsiString(bdn_weight2_) + " kg";
 			FirstWEdit->SetFocus();
 		}else{
-			SecondWEdit->Text = cur_weight_;
+			//SecondWEdit->Text = cur_weight_;
+			SecondWEdit->Text = GetWeight();
+            BreakdownWLabel3->Caption = AnsiString(bdn_weight1_) + " kg";
+            BreakdownWLabel4->Caption = AnsiString(bdn_weight2_) + " kg";
 			SecondWEdit->SetFocus();
 		}
 	}else if (mode == imSecond){
-		SecondWEdit->Text = cur_weight_;
+		//SecondWEdit->Text = cur_weight_;
+		SecondWEdit->Text = GetWeight();
+        BreakdownWLabel3->Caption = AnsiString(bdn_weight1_) + " kg";
+        BreakdownWLabel4->Caption = AnsiString(bdn_weight2_) + " kg";
 		SecondWEdit->SetFocus();
 	}
 
@@ -2017,30 +2104,30 @@ void __fastcall TMainForm::HannyuComboKeyDown(TObject *Sender, WORD &Key,
         Key = 0;
 }
 //---------------------------------------------------------------------------
-void __fastcall TMainForm::ClientSocketError(TObject *Sender,
+void __fastcall TMainForm::ClientSocket1Error(TObject *Sender,
       TCustomWinSocket *Socket, TErrorEvent ErrorEvent, int &ErrorCode)
 {
     switch (ErrorEvent){
     case eeReceive:
-		StatusBar->Panels->Items[1]->Text = "重量値受信: 受信エラー";
+		StatusBar->Panels->Items[1]->Text = "重量値受信1: 受信エラー";
 		break;
 	case eeConnect:
-		StatusBar->Panels->Items[1]->Text = "重量値受信: 接続エラー";
+		StatusBar->Panels->Items[1]->Text = "重量値受信1: 接続エラー";
 		break;
 	case eeDisconnect:
-		StatusBar->Panels->Items[1]->Text = "重量値受信: 切断エラー";
+		StatusBar->Panels->Items[1]->Text = "重量値受信1: 切断エラー";
 		break;
 	default:
-        StatusBar->Panels->Items[1]->Text = "重量値受信: ソケットエラー";
+        StatusBar->Panels->Items[1]->Text = "重量値受信1: ソケットエラー";
         break;
     };
 
-    ClientSocket->Close();
+    ClientSocket1->Close();
 
     ErrorCode = 0;
 }
 //---------------------------------------------------------------------------
-void __fastcall TMainForm::ClientSocketRead(TObject *Sender,
+void __fastcall TMainForm::ClientSocket1Read(TObject *Sender,
       TCustomWinSocket *Socket)
 {
     int index;
@@ -2056,9 +2143,9 @@ void __fastcall TMainForm::ClientSocketRead(TObject *Sender,
     int len = weight.Length();
     if (len < 2)                    return;
     switch (weight[1]){
-    case 'S':   WeightPanel->Font->Color = TColor(0x00CDF7A4);	break;
-	case 'U':   WeightPanel->Font->Color = TColor(0x008080FF);	break;
-	case 'O':	WeightPanel->Font->Color = clYellow;
+    case 'S':   WeightPanel1->Font->Color = TColor(0x00CDF7A4);	break;
+	case 'U':   WeightPanel1->Font->Color = TColor(0x008080FF);	break;
+	case 'O':	WeightPanel1->Font->Color = clYellow;
 				ol = true;
 				break;
     default:
@@ -2078,21 +2165,109 @@ void __fastcall TMainForm::ClientSocketRead(TObject *Sender,
 			ol = true;
 
 	if (ol){
-		cur_weight_ = 0;
-		WeightPanel->Caption = "OverLoad";
+		cur_weight1_ = 0;
+		WeightPanel1->Caption = "OverLoad";
 		return;
 	}
 
-	old_weight_ = cur_weight_;
-	cur_weight_ = tmp_weight;
+	old_weight1_ = cur_weight1_;
+	cur_weight1_ = tmp_weight;
 
-	if (old_weight_ < weighing_border_ && cur_weight_ >= weighing_border_){
+	if (old_weight1_ < weighing_border_ && cur_weight1_ >= weighing_border_){
 		PlaySound(ToString(DM->INI["Weighing::SoundFile"]).c_str(), 0, SND_ASYNC);
-	}else if ((old_weight_ >= weighing_border_) && (cur_weight_ < weighing_border_)){
+	}else if ((old_weight1_ >= weighing_border_) && (cur_weight1_ < weighing_border_)){
     	last_card_no_ = 0;
 	}
 
-	WeightPanel->Caption = FormatFloat("###,##0", cur_weight_);
+	WeightPanel1->Caption = FormatFloat("###,##0", cur_weight1_);
+}
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::ClientSocket2Error(TObject *Sender,
+      TCustomWinSocket *Socket, TErrorEvent ErrorEvent, int &ErrorCode)
+{
+	switch (ErrorEvent){
+	case eeReceive:
+		StatusBar->Panels->Items[1]->Text = "重量値受信: 受信エラー";
+		break;
+	case eeConnect:
+		StatusBar->Panels->Items[1]->Text = "重量値受信: 接続エラー";
+		break;
+	case eeDisconnect:
+		StatusBar->Panels->Items[1]->Text = "重量値受信: 切断エラー";
+		break;
+	default:
+        StatusBar->Panels->Items[1]->Text = "重量値受信: ソケットエラー";
+        break;
+    };
+
+    ClientSocket1->Close();
+
+    ErrorCode = 0;
+
+}
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::ClientSocket2Read(TObject *Sender,
+      TCustomWinSocket *Socket)
+{
+    int index;
+    AnsiString weight = Socket->ReceiveText();
+
+    std::auto_ptr<TStringList> RecList(new TStringList());
+    RecList->Text = weight;
+    if (RecList->Count < 1)
+        return;
+    weight = RecList->Strings[RecList->Count - 1];
+
+	bool ol = false;
+    int len = weight.Length();
+    if (len < 2)                    return;
+    switch (weight[1]){
+    case 'S':   WeightPanel2->Font->Color = TColor(0x00CDF7A4);	break;
+	case 'U':   WeightPanel2->Font->Color = TColor(0x008080FF);	break;
+	case 'O':	WeightPanel2->Font->Color = clYellow;
+				ol = true;
+				break;
+    default:
+        return;
+    }
+
+    weight.Delete(1, 1);    // ステータスキャラクタの削除
+    weight.Delete(weight.Length() - 1, 2);  // 末尾の \r\n を削除
+    Currency tmp_weight;
+    try{
+        tmp_weight = Currency(weight);
+	}catch(...){return;}
+
+	// オーバーロードチェック
+	if (DM->hyoryo_ != 0 && DM->meryo_ != 0)
+		if (DM->hyoryo_ + DM->meryo_ * 9 < tmp_weight || DM->meryo_ * (-20) > tmp_weight)
+			ol = true;
+
+	if (ol){
+		cur_weight2_ = 0;
+		WeightPanel2->Caption = "OverLoad";
+		return;
+	}
+
+	old_weight2_ = cur_weight2_;
+	cur_weight2_ = tmp_weight;
+
+	// [INI] Weighing::SoundBorder
+/*
+	int border = ToInt(DM->INI["Weighing::SoundBorder"]);
+
+	if (old_weight_ < border && cur_weight_ >= border){
+		// [INI] Weighing::SoundFile
+		PlaySound(ToString(DM->INI["Weighing::SoundFile"]).c_str(), 0, SND_ASYNC);
+	}
+*/
+    if (old_weight2_ < weighing_border_ && cur_weight2_ >= weighing_border_){
+        PlaySound(ToString(DM->INI["Weighing::SoundFile"]).c_str(), 0, SND_ASYNC);
+    }else if ((old_weight2_ >= weighing_border_) && (cur_weight2_ < weighing_border_)){
+        last_card_no_ = 0;
+    }
+
+	WeightPanel2->Caption = FormatFloat("###,##0", cur_weight2_);
 }
 //---------------------------------------------------------------------------
 /**
@@ -2189,7 +2364,8 @@ void __fastcall TMainForm::OnRFIDCard(TMessage& message)
         ::MessageBeep(MB_ICONEXCLAMATION);
         return;
 	}
-    if (cur_weight_ < weighing_border_){
+    //if (cur_weight_ < weighing_border_){
+    if (GetWeight() < weighing_border_){
 	    StatusBar->Panels->Items[1]->Text = "RFID: 車両なし";
         ::MessageBeep(MB_ICONEXCLAMATION);
         return;
@@ -2536,8 +2712,12 @@ bool __fastcall TMainForm::SharyoCheck()
 
 		keiryo_count_ = 2;
 
-		if (GetMode() == imFirst)
-			FirstWEdit->Text = cur_weight_;
+		if (GetMode() == imFirst){
+			//FirstWEdit->Text = cur_weight_;
+			FirstWEdit->Text = GetWeight();
+            BreakdownWLabel1->Caption = AnsiString(bdn_weight1_) + " kg";
+            BreakdownWLabel2->Caption = AnsiString(bdn_weight2_) + " kg";
+        }
 
 		car_id_  = 0;
 		new_car_ = true;
@@ -2595,8 +2775,12 @@ bool __fastcall TMainForm::SharyoCheck()
 
 		keiryo_count_ = 2;
 
-		if (GetMode() == imFirst)
-			FirstWEdit->Text = cur_weight_;
+		if (GetMode() == imFirst){
+			//FirstWEdit->Text = cur_weight_;
+            FirstWEdit->Text = GetWeight();
+            BreakdownWLabel1->Caption = AnsiString(bdn_weight1_) + " kg";
+            BreakdownWLabel2->Caption = AnsiString(bdn_weight2_) + " kg";
+        }
 
 		car_id_  = 0;
 		new_car_ = true;
@@ -2643,10 +2827,17 @@ bool __fastcall TMainForm::SharyoCheck()
 
 			SharyoNameEdit->Text = ToString(SET_TOP(set)["車両名称"]);
 
-			if (keiryo_count_ == 2)
-				FirstWEdit->Text = cur_weight_;
-			else
-				SecondWEdit->Text = cur_weight_;
+			if (keiryo_count_ == 2){
+				//FirstWEdit->Text = cur_weight_;
+				FirstWEdit->Text = GetWeight();
+                BreakdownWLabel1->Caption = AnsiString(bdn_weight1_) + " kg";
+                BreakdownWLabel2->Caption = AnsiString(bdn_weight2_) + " kg";
+			}else{
+				//SecondWEdit->Text = cur_weight_;
+				SecondWEdit->Text = GetWeight();
+                BreakdownWLabel3->Caption = AnsiString(bdn_weight1_) + " kg";
+                BreakdownWLabel4->Caption = AnsiString(bdn_weight2_) + " kg";
+            }
 		}else{
 			SharyoNameEdit->Text = ToString(SET_TOP(set)["車両名称"]);
 		}
@@ -2712,10 +2903,17 @@ bool __fastcall TMainForm::RFIDSharyoCheck(int card_no)
 
 		SharyoNameEdit->Text = ToString(SET_TOP(car_set)["車両名称"]);
 
-		if (keiryo_count_ == 2)
-			FirstWEdit->Text = cur_weight_;
-		else
-			SecondWEdit->Text = cur_weight_;
+		if (keiryo_count_ == 2){
+			//FirstWEdit->Text = cur_weight_;
+			FirstWEdit->Text = GetWeight();
+            BreakdownWLabel1->Caption = AnsiString(bdn_weight1_) + " kg";
+            BreakdownWLabel2->Caption = AnsiString(bdn_weight2_) + " kg";
+		}else{
+			//SecondWEdit->Text = cur_weight_;
+			SecondWEdit->Text = GetWeight();
+            BreakdownWLabel3->Caption = AnsiString(bdn_weight1_) + " kg";
+            BreakdownWLabel4->Caption = AnsiString(bdn_weight2_) + " kg";
+        }
 
 		CalcWeight();
 
@@ -2811,10 +3009,17 @@ void __fastcall TMainForm::SharyoButtonClick(TObject *Sender)
 
             SharyoNameEdit->Text = ToString(SET_TOP(set)["車両名称"]);
 
-            if (keiryo_count_ == 2)
-                FirstWEdit->Text = cur_weight_;
-            else
-                SecondWEdit->Text = cur_weight_;
+            if (keiryo_count_ == 2){
+                //FirstWEdit->Text = cur_weight_;
+                FirstWEdit->Text = GetWeight();
+                BreakdownWLabel1->Caption = AnsiString(bdn_weight1_) + " kg";
+                BreakdownWLabel2->Caption = AnsiString(bdn_weight2_) + " kg";
+            }else{
+                //SecondWEdit->Text = cur_weight_;
+                SecondWEdit->Text = GetWeight();
+                BreakdownWLabel3->Caption = AnsiString(bdn_weight1_) + " kg";
+                BreakdownWLabel4->Caption = AnsiString(bdn_weight2_) + " kg";
+            }
         }else{
             SharyoNameEdit->Text = ToString(SET_TOP(set)["車両名称"]);
         }
@@ -2991,3 +3196,21 @@ void __fastcall TMainForm::PrintCopy(int keiryo_id)
 		// nothing to do
 	}
 }
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::SelectScale1(TObject *Sender)
+{
+    FWBasePanel->Color = TColor(0x008AF8FD);
+    FWNamePanel->Color = TColor(0x008AF8FD);
+    SWBasePanel->Color = clBtnFace;
+    SWNamePanel->Color = clBtnFace;
+}
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::SelectScale2(TObject *Sender)
+{
+    FWBasePanel->Color = clBtnFace;
+    FWNamePanel->Color = clBtnFace;
+    SWBasePanel->Color = TColor(0x008AF8FD);
+    SWNamePanel->Color = TColor(0x008AF8FD);
+}
+//---------------------------------------------------------------------------
+
